@@ -59,9 +59,53 @@ INSERT INTO konf_sijainti VALUES (null, 'Helsingin jäähalli', 'Suomi', '00250'
 INSERT INTO konf_sijainti VALUES (null, 'Oulun jäähalli', 'Suomi', '90130', 'Oulu', 'Teuvo Pakkalan katu 11', 6614);
 INSERT INTO konf_sijainti VALUES (null, 'Helsinki-halli', 'Suomi', '00240', 'Helsinki', 'Areenakuja 1', 15500);
 
--- SOSIAALINEN TAPAHTUMA
+-- SOSIAALINEN TAPAHTUMA JOS KÄYTÖSSÄ SUOMIPARAMETRIT 
+-- EI VIELÄ AJETTU
+INSERT INTO testi_sos_tapahtuma VALUES (null, 'Päätösillallinen ravintola Shelter', 'Illallinen', '23.08.2024 18:00', '23.08.2024 21:00', 'Kanavaranta 7, 00160 Helsinki', null, 70.00);
+-- SOSIAALINEN TAPAHTUMA JOS KÄYTÖSSÄ AMERICAN PARAMETRIT
+-- EI VIELÄ AJETTU
+INSERT INTO testi_sos_tapahtuma VALUES (null, 'Päätösillallinen ravintola Shelter', 'Illallinen', '23.may.2024 12:00', '12.may.2024 10:00', 'Kanavaranta 7, 00160 Helsinki', null, 70.00);
 
--- JOS KÄYTÖSSÄ SUOMIPARAMETRIT
-    INSERT INTO testi_sos_tapahtuma VALUES (1, 'Päätösillallinen ravintola Shelter', 'Illallinen', '23.08.2024 18:00', '23.08.2024 21:00', 'Kanavaranta 7, 00160 Helsinki', null, 70.00);
--- JOS KÄYTÖSSÄ AMERICAN PARAMETRIT
-    INSERT INTO testi_sos_tapahtuma VALUES (1, 'Päätösillallinen ravintola Shelter', 'Illallinen', '23.may.2024 12:00', '12.may.2024 10:00', 'Kanavaranta 7, 00160 Helsinki', null, 70.00);
+-- KONFERENSSIN HUONE
+INSERT INTO konf_huone VALUES (null, 'Snellmann', '003', '1', 250, 3);
+INSERT INTO konf_huone VALUES (null, 'Neuvotteluhuone', '045', '2', 25, 1);
+INSERT INTO konf_huone VALUES (null, 'Neuvotteluhuone', '044', '2', 25, 1);
+INSERT INTO konf_huone VALUES (null, 'Neuvotteluhuone', '042', '2', 15, 1);
+INSERT INTO konf_huone VALUES (null, 'Neuvotteluhuone', '042', '2', 15, 1);
+INSERT INTO konf_huone VALUES (null, 'Tapahtuma-alue', '000', '1', 4500, 2);
+INSERT INTO konf_huone VALUES (null, 'Tapahtuma-alue', '000', '1', 2000, 4);
+
+-- KONFERENSSIN TYÖNTEKIJÄ
+INSERT INTO konf_tyontekija VALUES (null, 1, 1);
+INSERT INTO konf_tyontekija VALUES (null, 5, 8);
+INSERT INTO konf_tyontekija VALUES (null, 6, 8);
+
+-- KONFERENSSI
+INSERT INTO konferenssi VALUES ();
+
+-- KONFERENSSIN HINTA
+INSERT INTO konf_hinta VALUES ();
+
+-- KONFERENSSIN ILMOITTAUTUMINEN
+INSERT INTO konf_ilmoittautuminen VALUES ();
+
+-- SOSIAALISEN TAPAHTUMAN ILMOITTAUTUMINEN
+INSERT INTO sos_ilmoittautuminen VALUES ();
+
+-- ESITELMÄ
+INSERT INTO esitelma VALUES ();
+
+-- ESITELMAN TEKIJÄ
+INSERT INTO esitelman_tekija VALUES ();
+
+-- ARVIOINTI
+INSERT INTO arvionti VALUES ();
+
+-- KONFERENSSIN TEHTÄVÄ
+INSERT INTO konf_tehtava VALUES ();
+
+-- KONFERENSSIN OHJELMANUMERO
+INSERT INTO konf_ohjelmanumero VALUES ();
+
+-- OHJELMAN HENKILÖ
+INSERT INTO ohjelman_henkilo VALUES ();
