@@ -1,3 +1,4 @@
+-- TAULUJEN LUONTI
 CREATE TABLE arviointi (
     id                  INTEGER NOT NULL,
     arviointi_pvm       DATE NOT NULL,
@@ -46,8 +47,7 @@ CREATE TABLE esitelman_tekija (
     henkilo_id       INTEGER NOT NULL
 );
 
-ALTER TABLE esitelman_tekija ADD CONSTRAINT esitelman_tekija_pk PRIMARY KEY ( esitelma_id,
-                                                                              henkilo_id );
+ALTER TABLE esitelman_tekija ADD CONSTRAINT esitelman_tekija_pk PRIMARY KEY ( esitelma_id, henkilo_id );
 
 CREATE TABLE esitelman_tyyppi (
     id               INTEGER NOT NULL,
@@ -172,8 +172,7 @@ CREATE TABLE ohjelman_henkilo (
     henkilo_id            INTEGER NOT NULL
 );
 
-ALTER TABLE ohjelman_henkilo ADD CONSTRAINT ohjelman_henkilo_pk PRIMARY KEY ( konf_ohjelmanumero_id,
-                                                                              henkilo_id );
+ALTER TABLE ohjelman_henkilo ADD CONSTRAINT ohjelman_henkilo_pk PRIMARY KEY ( konf_ohjelmanumero_id, henkilo_id );
 
 CREATE TABLE ohjelmatyyppi (
     id            INTEGER NOT NULL,
@@ -201,17 +200,14 @@ CREATE TABLE sos_ilmoittautuminen (
     sos_tapahtuma_id   INTEGER NOT NULL
 );
 
-ALTER TABLE sos_ilmoittautuminen
-    ADD CONSTRAINT sos_ilmoittautuminen_pk PRIMARY KEY ( henkilo_id,
-                                                         konferenssi_id,
-                                                         sos_tapahtuma_id );
+ALTER TABLE sos_ilmoittautuminen ADD CONSTRAINT sos_ilmoittautuminen_pk PRIMARY KEY ( henkilo_id, konferenssi_id, sos_tapahtuma_id );
 
 CREATE TABLE sos_tapahtuma (
     id                 INTEGER NOT NULL,
     sos_tapahtuma_nimi VARCHAR2(100 CHAR) NOT NULL,
     tapahtuma_tyyppi   VARCHAR2(50 CHAR) NOT NULL,
-    aloitus_aika       DATE NOT NULL,
-    lopetus_aika       DATE NOT NULL,
+    aloitus_aika       TIMESTAMP NOT NULL,
+    lopetus_aika       TIMESTAMP NOT NULL,
     paikka             VARCHAR2(100 CHAR) NOT NULL,
     info               VARCHAR2(1000 CHAR),
     hinta              NUMBER NOT NULL
@@ -240,6 +236,7 @@ CREATE TABLE tehtavan_status (
 
 ALTER TABLE tehtavan_status ADD CONSTRAINT tehtavan_status_pk PRIMARY KEY ( id );
 
+-- VIITEAVAIMET
 ALTER TABLE arviointi
     ADD CONSTRAINT arviointi_esitelma_fk FOREIGN KEY ( esitelma_id )
         REFERENCES esitelma ( id );
