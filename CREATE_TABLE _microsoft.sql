@@ -32,8 +32,9 @@ CREATE TABLE esitelman_status (
 CREATE TABLE esitelman_tekija (
     jarjestysnro     INTEGER NOT NULL,
     kotiorganisaatio VARCHAR(100),
-    esitelma_id      INTEGER NOT NULL primary key,
-    henkilo_id       INTEGER NOT NULL primary key,
+    esitelma_id      INTEGER NOT NULL,
+    henkilo_id       INTEGER NOT NULL,
+    PRIMARY KEY (esitelma_id, henkilo_id)
 );
 
 CREATE TABLE esitelman_tyyppi (
@@ -134,8 +135,9 @@ CREATE TABLE konferenssi (
 );
 
 CREATE TABLE ohjelman_henkilo (
-    konf_ohjelmanumero_id INTEGER NOT NULL primary key,
-    henkilo_id            INTEGER NOT NULL primary key
+    konf_ohjelmanumero_id INTEGER NOT NULL,
+    henkilo_id            INTEGER NOT NULL
+    PRIMARY KEY (konf_ohjelmanumero_id, henkilo_id)
 );
 
 CREATE TABLE ohjelmatyyppi (
@@ -156,9 +158,10 @@ CREATE TABLE sos_ilmoittautuminen (
     onko_maksettu      BIT,
     onko_kutsuttu      BIT,
     hlo_maara          INTEGER NOT NULL,
-    henkilo_id         INTEGER NOT NULL primary key,
-    konferenssi_id     INTEGER NOT NULL primary key,
-    sos_tapahtuma_id   INTEGER NOT NULL primary key
+    henkilo_id         INTEGER NOT NULL,
+    konferenssi_id     INTEGER NOT NULL,
+    sos_tapahtuma_id   INTEGER NOT NULL
+    PRIMARY KEY (henkilo_id, konferenssi_id, sos_tapahtuma_id)
 );
 
 
