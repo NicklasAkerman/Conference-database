@@ -1,24 +1,22 @@
 -- TAULUJEN LUONTI
 CREATE TABLE arviointi (
-    id                  INTEGER NOT NULL,
+    id                  INTEGER NOT NULL identity (1,1) primary key,
     arviointi_pvm       DATE NOT NULL,
-    kommentti           VARCHAR2(1000 CHAR),
+    kommentti           VARCHAR(1000),
     konf_tyontekija_id  INTEGER NOT NULL,
     esitelma_id         INTEGER NOT NULL,
     esitelman_tyyppi_id INTEGER NOT NULL,
     esitelman_status_id INTEGER
 );
 
-ALTER TABLE arviointi ADD CONSTRAINT arviointi_pk PRIMARY KEY ( id );
-
 CREATE TABLE esitelma (
-    id                    INTEGER NOT NULL,
-    linkki                VARCHAR2(200 CHAR) NOT NULL,
+    id                    INTEGER NOT NULL identity (1,1) primary key,
+    linkki                VARCHAR(200) NOT NULL,
     vastaanotto_pvm       DATE NOT NULL,
-    esitys_ajankohta      DATE,
-    esitelman_nimi        VARCHAR2(100 CHAR) NOT NULL,
-    tiivistelma           VARCHAR2(1000 CHAR) NOT NULL,
-    email                 VARCHAR2(100 CHAR) NOT NULL,
+    esitys_ajankohta      DATETIME,
+    esitelman_nimi        VARCHAR(100) NOT NULL,
+    tiivistelma           VARCHAR(1000) NOT NULL,
+    email                 VARCHAR(100) NOT NULL,
     konferenssi_id        INTEGER NOT NULL,
     teema_id              INTEGER NOT NULL,
     esitelman_tyyppi_id   INTEGER,
@@ -26,118 +24,92 @@ CREATE TABLE esitelma (
     konf_ohjelmanumero_id INTEGER
 );
 
-CREATE UNIQUE INDEX esitelma__idx ON
-    esitelma (
-        konf_ohjelmanumero_id
-    ASC );
-
-ALTER TABLE esitelma ADD CONSTRAINT esitelma_pk PRIMARY KEY ( id );
-
 CREATE TABLE esitelman_status (
-    id               INTEGER NOT NULL,
-    esitelman_status VARCHAR2(50 CHAR) NOT NULL
+    id               INTEGER NOT NULL identity (1,1) primary key,
+    esitelman_status VARCHAR(50) NOT NULL
 );
-
-ALTER TABLE esitelman_status ADD CONSTRAINT esitelman_status_pk PRIMARY KEY ( id );
 
 CREATE TABLE esitelman_tekija (
     jarjestysnro     INTEGER NOT NULL,
-    kotiorganisaatio VARCHAR2(100),
-    esitelma_id      INTEGER NOT NULL,
-    henkilo_id       INTEGER NOT NULL
+    kotiorganisaatio VARCHAR(100),
+    esitelma_id      INTEGER NOT NULL primary key,
+    henkilo_id       INTEGER NOT NULL primary key,
 );
-
-ALTER TABLE esitelman_tekija ADD CONSTRAINT esitelman_tekija_pk PRIMARY KEY ( esitelma_id, henkilo_id );
 
 CREATE TABLE esitelman_tyyppi (
-    id               INTEGER NOT NULL,
-    esitelman_tyyppi VARCHAR2(30 CHAR) NOT NULL
+    id               INTEGER NOT NULL identity (1,1) primary key,
+    esitelman_tyyppi VARCHAR(30) NOT NULL
 );
-
-ALTER TABLE esitelman_tyyppi ADD CONSTRAINT esitelman_tyyppi_pk PRIMARY KEY ( id );
 
 CREATE TABLE henkilo (
-    id               INTEGER NOT NULL,
-    etunimi          VARCHAR2(50 CHAR) NOT NULL,
-    sukunimi         VARCHAR2(100 CHAR) NOT NULL,
-    puhnro           VARCHAR2(20 CHAR),
-    email            VARCHAR2(100 CHAR) NOT NULL,
-    postinumero      VARCHAR2(5 CHAR),
-    postitoimipaikka VARCHAR2(100 CHAR),
-    katuosoite       VARCHAR2(100 CHAR),
-    maa              VARCHAR2(30 CHAR)
+    id               INTEGER NOT NULL identity (1,1) primary key,
+    etunimi          VARCHAR(50) NOT NULL,
+    sukunimi         VARCHAR(100) NOT NULL,
+    puhnro           VARCHAR(20),
+    email            VARCHAR(100) NOT NULL,
+    postinumero      VARCHAR(10),
+    postitoimipaikka VARCHAR(100),
+    katuosoite       VARCHAR(100),
+    maa              VARCHAR(30)
 );
 
-ALTER TABLE henkilo ADD CONSTRAINT henkilo_pk PRIMARY KEY ( id );
 
 CREATE TABLE konf_hinta (
-    id             INTEGER NOT NULL,
-    hinta          NUMBER NOT NULL,
+    id             INTEGER NOT NULL identity (1,1) primary key,
+    hinta          FLOAT NOT NULL,
     konferenssi_id INTEGER NOT NULL
 );
 
-ALTER TABLE konf_hinta ADD CONSTRAINT konf_hinta_pk PRIMARY KEY ( id );
-
 CREATE TABLE konf_huone (
-    id                    INTEGER NOT NULL,
-    tilan_nimi            VARCHAR2(50 CHAR),
-    huonenro              VARCHAR2(3 CHAR) NOT NULL,
-    kerros                VARCHAR2(2 CHAR) NOT NULL,
+    id                    INTEGER NOT NULL identity (1,1) primary key,
+    tilan_nimi            VARCHAR(50),
+    huonenro              VARCHAR(3) NOT NULL,
+    kerros                VARCHAR(2) NOT NULL,
     huoneen_max_hlo_maara INTEGER,
     konf_sijainti_id      INTEGER NOT NULL
 );
 
-ALTER TABLE konf_huone ADD CONSTRAINT konf_huone_pk PRIMARY KEY ( id );
-
 CREATE TABLE konf_ilmoittautuminen (
-    id                 INTEGER NOT NULL,
+    id                 INTEGER NOT NULL identity (1,1) primary key,
     ilmoittautumis_pvm DATE NOT NULL,
-    onko_maksettu      CHAR(1),
-    onko_osallistunut  CHAR(1),
-    onko_esitelmoija   CHAR(1),
-    onko_kutsuttu      CHAR(1),
-    onko_tyontekija    CHAR(1),
+    onko_maksettu      BIT,
+    onko_osallistunut  BIT,
+    onko_esitelmoija   BIT,
+    onko_kutsuttu      BIT,
+    onko_tyontekija    BIT,
     konf_perumis_pvm   DATE,
     konf_hinta_id      INTEGER NOT NULL,
     henkilo_id         INTEGER NOT NULL,
     konferenssi_id     INTEGER NOT NULL
 );
 
-ALTER TABLE konf_ilmoittautuminen ADD CONSTRAINT konf_ilmoittautuminen_pk PRIMARY KEY ( id );
 
 CREATE TABLE konf_ohjelmanumero (
-    id               INTEGER NOT NULL,
+    id               INTEGER NOT NULL identity (1,1) primary key,
     pvm              DATE,
-    aloitus_aika     DATE,
-    lopetus_aika     DATE,
-    lisainfo         VARCHAR2(200 CHAR),
+    aloitus_aika     DATETIME,
+    lopetus_aika     DATETIME,
+    lisainfo         VARCHAR(200),
     konferenssi_id   INTEGER NOT NULL,
     konf_huone_id    INTEGER,
     esitelma_id      INTEGER,
     ohjelmatyyppi_id INTEGER NOT NULL
 );
 
-CREATE UNIQUE INDEX konf_ohjelmanumero__idx ON
-    konf_ohjelmanumero (
-        esitelma_id
-    ASC );
-
-ALTER TABLE konf_ohjelmanumero ADD CONSTRAINT konf_ohjelmanumero_pk PRIMARY KEY ( id );
 
 CREATE TABLE konf_sijainti (
-    id               INTEGER NOT NULL,
-    paikan_nimi      VARCHAR2(50 CHAR) NOT NULL,
-    maa              VARCHAR2(30 CHAR) NOT NULL,
-    postinumero      VARCHAR2(5 CHAR) NOT NULL,
-    postitoimipaikka VARCHAR2(100 CHAR) NOT NULL,
-    katuosoite       VARCHAR2(200 CHAR) NOT NULL,
+    id               INTEGER NOT NULL identity (1,1) primary key,
+    paikan_nimi      VARCHAR(50) NOT NULL,
+    maa              VARCHAR(30) NOT NULL,
+    postinumero      VARCHAR(10) NOT NULL,
+    postitoimipaikka VARCHAR(100) NOT NULL,
+    katuosoite       VARCHAR(200) NOT NULL,
     max_hlo_maara    INTEGER
 );
 
-ALTER TABLE konf_sijainti ADD CONSTRAINT konf_sijainti_pk PRIMARY KEY ( id );
 
 CREATE TABLE konf_tehtava (
-    id                 INTEGER NOT NULL,
+    id                 INTEGER NOT NULL identity (1,1) primary key,
     tehtavan_deadline  DATE,
     konf_tyontekija_id INTEGER,
     konferenssi_id     INTEGER NOT NULL,
@@ -145,96 +117,79 @@ CREATE TABLE konf_tehtava (
     tehtava_id         INTEGER NOT NULL
 );
 
-ALTER TABLE konf_tehtava ADD CONSTRAINT konf_tehtava_pk PRIMARY KEY ( id );
-
 CREATE TABLE konf_tyontekija (
-    id         INTEGER NOT NULL,
+    id         INTEGER NOT NULL identity (1,1) primary key,
     henkilo_id INTEGER NOT NULL,
     rooli_id   INTEGER NOT NULL
 );
 
-ALTER TABLE konf_tyontekija ADD CONSTRAINT konf_tyontekija_pk PRIMARY KEY ( id );
-
 CREATE TABLE konferenssi (
-    id               INTEGER NOT NULL,
-    konf_nimi        VARCHAR2(200) NOT NULL,
+    id               INTEGER NOT NULL identity (1,1) primary key,
+    konf_nimi        VARCHAR(200) NOT NULL,
     aloitus_pvm      DATE,
     lopetus_pvm      DATE,
-    konf_tiivistelma VARCHAR2(1000 CHAR),
+    konf_tiivistelma VARCHAR(1000),
     konf_sijainti_id INTEGER,
     teema_id         INTEGER NOT NULL
 );
 
-ALTER TABLE konferenssi ADD CONSTRAINT konferenssi_pk PRIMARY KEY ( id );
-
 CREATE TABLE ohjelman_henkilo (
-    konf_ohjelmanumero_id INTEGER NOT NULL,
-    henkilo_id            INTEGER NOT NULL
+    konf_ohjelmanumero_id INTEGER NOT NULL primary key,
+    henkilo_id            INTEGER NOT NULL primary key
 );
-
-ALTER TABLE ohjelman_henkilo ADD CONSTRAINT ohjelman_henkilo_pk PRIMARY KEY ( konf_ohjelmanumero_id, henkilo_id );
 
 CREATE TABLE ohjelmatyyppi (
-    id            INTEGER NOT NULL,
-    ohjelmatyyppi VARCHAR2(50 CHAR) NOT NULL,
-    lisainfo      VARCHAR2(200 CHAR)
+    id            INTEGER NOT NULL identity (1,1) primary key,
+    ohjelmatyyppi VARCHAR(50) NOT NULL,
+    lisainfo      VARCHAR(200)
 );
 
-ALTER TABLE ohjelmatyyppi ADD CONSTRAINT ohjelmatyyppi_pk PRIMARY KEY ( id );
 
 CREATE TABLE rooli (
-    id    INTEGER NOT NULL,
-    rooli VARCHAR2(30 CHAR) NOT NULL
+    id    INTEGER NOT NULL identity (1,1) primary key,
+    rooli VARCHAR(30) NOT NULL
 );
-
-ALTER TABLE rooli ADD CONSTRAINT rooli_pk PRIMARY KEY ( id );
 
 CREATE TABLE sos_ilmoittautuminen (
     ilmoittautumis_pvm DATE NOT NULL,
     sos_perumis_pvm    DATE,
-    onko_maksettu      CHAR(1),
-    onko_kutsuttu      CHAR(1),
+    onko_maksettu      BIT,
+    onko_kutsuttu      BIT,
     hlo_maara          INTEGER NOT NULL,
-    henkilo_id         INTEGER NOT NULL,
-    konferenssi_id     INTEGER NOT NULL,
-    sos_tapahtuma_id   INTEGER NOT NULL
+    henkilo_id         INTEGER NOT NULL primary key,
+    konferenssi_id     INTEGER NOT NULL primary key,
+    sos_tapahtuma_id   INTEGER NOT NULL primary key
 );
 
-ALTER TABLE sos_ilmoittautuminen ADD CONSTRAINT sos_ilmoittautuminen_pk PRIMARY KEY ( henkilo_id, konferenssi_id, sos_tapahtuma_id );
 
 CREATE TABLE sos_tapahtuma (
-    id                 INTEGER NOT NULL,
-    sos_tapahtuma_nimi VARCHAR2(100 CHAR) NOT NULL,
-    tapahtuma_tyyppi   VARCHAR2(50 CHAR) NOT NULL,
-    aloitus_aika       TIMESTAMP NOT NULL,
-    lopetus_aika       TIMESTAMP NOT NULL,
-    paikka             VARCHAR2(100 CHAR) NOT NULL,
-    info               VARCHAR2(1000 CHAR),
-    hinta              NUMBER NOT NULL
+    id                 INTEGER NOT NULL identity (1,1) primary key,
+    sos_tapahtuma_nimi VARCHAR(100) NOT NULL,
+    tapahtuma_tyyppi   VARCHAR(50) NOT NULL,
+    aloitus_aika       DATETIME NOT NULL,
+    lopetus_aika       DATETIME NOT NULL,
+    paikka             VARCHAR(100) NOT NULL,
+    info               VARCHAR(1000),
+    hinta              FLOAT NOT NULL
 );
 
-ALTER TABLE sos_tapahtuma ADD CONSTRAINT sos_tapahtuma_pk PRIMARY KEY ( id );
 
 CREATE TABLE teema (
-    id    INTEGER NOT NULL,
-    teema VARCHAR2(200 CHAR) NOT NULL
+    id    INTEGER NOT NULL identity (1,1) primary key,
+    teema VARCHAR(200) NOT NULL
 );
 
-ALTER TABLE teema ADD CONSTRAINT teema_pk PRIMARY KEY ( id );
 
 CREATE TABLE tehtava (
-    id              INTEGER NOT NULL,
-    tehtavan_kuvaus VARCHAR2(300 CHAR) NOT NULL
+    id              INTEGER NOT NULL identity (1,1) primary key,
+    tehtavan_kuvaus VARCHAR(300) NOT NULL
 );
 
-ALTER TABLE tehtava ADD CONSTRAINT tehtava_pk PRIMARY KEY ( id );
 
 CREATE TABLE tehtavan_status (
-    id              INTEGER NOT NULL,
-    tehtavan_status VARCHAR2(50 CHAR) NOT NULL
+    id              INTEGER NOT NULL identity (1,1) primary key,
+    tehtavan_status VARCHAR(50) NOT NULL
 );
-
-ALTER TABLE tehtavan_status ADD CONSTRAINT tehtavan_status_pk PRIMARY KEY ( id );
 
 -- VIITEAVAIMET
 ALTER TABLE arviointi
