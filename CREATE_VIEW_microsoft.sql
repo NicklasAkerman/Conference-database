@@ -15,14 +15,16 @@ SELECT * FROM Ilmoittautuneiden_maara_nimella;
 
 
 -- ESITELMÄT TEEMOITTAIN
+CREATE VIEW konferenssin_esitelmien_teemat_konf_id_1
 Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitelmän aihe
 
 
 -- KONFERENSSI OHJELMA
 Konferenssi taulun Konf_nimi
-Konf_ohjelmanumero id, pvm, aloitus_aika
+Konf_ohjelmanumero koko taulun
+CREATE VIEW konferenssin_ohjelma_konf_id_1 AS
 
--- PROCEEDEINGS
+-- PROCEEDINGS
 
 
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
