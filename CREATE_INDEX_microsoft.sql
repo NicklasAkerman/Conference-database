@@ -1,18 +1,20 @@
-CREATE INDEX idx_konf_nimi ON Konferenssi (konf_nimi, id);
-CREATE INDEX idx_hlo_nimi ON Henkilo (sukunimi, etunimi, id);
-CREATE INDEX idx_konf_ilmo_id ON Konf_ilmoittautuminen (konferenssi_id, id);
-
-
-
-konf_ohjelmanumero
-konferenssi_id + id
-
-konf_huone
-tilan_nimi + id
-
-esitelma
-esitelman_nimi + id
-
-ohjelmatyyppi
-ohjelmatyyppi + id
-
+CREATE INDEX idx_arviointi ON arviointi (esitelma_id, id);
+CREATE INDEX idx_esitelma ON esitelma (esitelman_nimi, id);
+CREATE INDEX idx_esitelman_status ON esitelman_status (esitelman_status, id);
+CREATE INDEX idx_esitelman_tekija ON esitelman_tekija (esitelma_id, henkilo_id, jarjestysnro);
+CREATE INDEX idx_esitelman_tyyppi ON esitelman_tyyppi (esitelman_tyyppi, id);
+CREATE INDEX idx_henkilo ON henkilo (sukunimi, etunimi, id);
+CREATE INDEX idx_konf_hinta ON konf_hinta (hinta, id);
+CREATE INDEX idx_konf_huone ON Konf_huone (tilan_nimi, id); 
+CREATE INDEX idx_konf_ilmoittautuminen ON Konf_ilmoittautuminen (konferenssi_id, id);
+CREATE INDEX idx_konf_ohjelmanumero ON konf_ohjelmanumero (konferenssi_id, id);
+CREATE INDEX idx_konf_sijainti ON konf_sijainti (paikan_nimi, id);
+CREATE INDEX idx_konf_tehtava ON konf_tehtava (konferenssi_id, tehtava_id);
+CREATE INDEX idx_konf_tyontekija ON konf_tyontekija (rooli_id, henkilo_id,);
+CREATE INDEX idx_konferenssi ON Konferenssi (konf_nimi, id);
+CREATE INDEX idx_ohjelmatyyppi ON ohjelmatyyppi (ohjelmatyyppi, id);
+CREATE INDEX idx_rooli ON rooli (rooli, id);
+CREATE INDEX idx_sos_tapahtuma ON sos_tapahtuma (tos_tapahtuma_nimi, id);
+CREATE INDEX idx_teema ON teema (teema, id);
+CREATE INDEX idx_tehtava ON tehtava (tehtavan_kuvaus, id);
+CREATE INDEX idx_tehtavan_status ON tehtavan_status (tehtavan_status, id);
