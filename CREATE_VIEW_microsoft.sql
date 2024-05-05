@@ -19,9 +19,14 @@ Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitel
 
 
 -- KONFERENSSI OHJELMA
+Konferenssi taulun Konf_nimi
+Konf_ohjelmanumero id, pvm, aloitus_aika
 
 -- PROCEEDEINGS
 
+
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
 
+
 -- OSALLISTUJALISTAN KOONTI
+
