@@ -10,11 +10,11 @@ CREATE INDEX idx_konf_ilmoittautuminen ON Konf_ilmoittautuminen (konferenssi_id,
 CREATE INDEX idx_konf_ohjelmanumero ON konf_ohjelmanumero (konferenssi_id, id);
 CREATE INDEX idx_konf_sijainti ON konf_sijainti (paikan_nimi, id);
 CREATE INDEX idx_konf_tehtava ON konf_tehtava (konferenssi_id, tehtava_id);
-CREATE INDEX idx_konf_tyontekija ON konf_tyontekija (rooli_id, henkilo_id,);
+CREATE INDEX idx_konf_tyontekija ON konf_tyontekija (rooli_id, henkilo_id);
 CREATE INDEX idx_konferenssi ON Konferenssi (konf_nimi, id);
 CREATE INDEX idx_ohjelmatyyppi ON ohjelmatyyppi (ohjelmatyyppi, id);
 CREATE INDEX idx_rooli ON rooli (rooli, id);
-CREATE INDEX idx_sos_tapahtuma ON sos_tapahtuma (tos_tapahtuma_nimi, id);
+CREATE INDEX idx_sos_tapahtuma ON sos_tapahtuma (sos_tapahtuma_nimi, id);
 CREATE INDEX idx_teema ON teema (teema, id);
 CREATE INDEX idx_tehtava ON tehtava (tehtavan_kuvaus, id);
 CREATE INDEX idx_tehtavan_status ON tehtavan_status (tehtavan_status, id);

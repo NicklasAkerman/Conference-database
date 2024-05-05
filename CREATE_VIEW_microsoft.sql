@@ -14,9 +14,10 @@ GROUP BY konf_nimi;
 SELECT * FROM Ilmoittautuneiden_maara_nimella;
 
 
--- ESITELMÄT TEEMOITTAIN
+-- ESITELMÄEHDOTUKSET TEEMOITTAIN
 CREATE VIEW konferenssin_esitelmien_teemat_konf_id_1
 Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitelmän aihe
+
 
 
 -- KONFERENSSI OHJELMA
