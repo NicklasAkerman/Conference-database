@@ -66,6 +66,10 @@ INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 0, 0, 0, null, 1, 
 INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 0, 0, 0, 0, 0, null, 1, 2, 1);
 INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.03', 1, 0, 1, 0, 0, null, 1, 3, 1);
 INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.04', 1, 0, 0, 1, 0, null, 1, 4, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 0, 0, 0, null, 1, 1, 2);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 0, 0, 0, 0, 0, null, 1, 2, 2);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.03', 1, 0, 1, 0, 0, null, 1, 3, 2);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.04', 1, 0, 0, 1, 0, null, 1, 4, 2);
 
 
 -- SOSIAALISEN TAPAHTUMAN ILMOITTAUTUMINEN
