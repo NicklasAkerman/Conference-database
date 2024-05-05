@@ -64,7 +64,7 @@ CREATE TABLE konf_hinta (
 CREATE TABLE konf_huone (
     id                    INTEGER NOT NULL identity (1,1) primary key,
     tilan_nimi            VARCHAR(50),
-    huonenro              VARCHAR(3) NOT NULL,
+    huonenumero           VARCHAR(3) NOT NULL,
     kerros                VARCHAR(2) NOT NULL,
     huoneen_max_hlo_maara INTEGER,
     konf_sijainti_id      INTEGER NOT NULL

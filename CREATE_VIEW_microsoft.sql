@@ -3,7 +3,9 @@ CREATE VIEW Ilmoittautuneiden_maara AS
 SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
 GROUP BY konf_nimi;
+
 SELECT * FROM Ilmoittautuneiden_maara;
+
 
 -- ILMOTTAUNEIDEN MÄÄRÄ KONFERENSSIN NIMEN PERUSTEELLA HAKIEN
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
@@ -11,32 +13,101 @@ SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä'
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
 where konf_nimi LIKE 'Sijoita %'
 GROUP BY konf_nimi;
+
 SELECT * FROM Ilmoittautuneiden_maara_nimella;
 
--- ARVIOIJAN ARVIONTILOMAKE
+
+
+
+-- ARVIOIJAN ARVIONTILOMAKE ------> KESKEN!!!! Pura konf_tyontekija_id nimiksi... = arvioinnin tekija
+
+CREATE VIEW Arviointilomke AS
+
+SELECT  A.konf_tyontekija_id, E.esitelman_nimi, T.id as teema, ET.esitelman_tyyppi, A.kommentti
+FROM Arviointi A
+JOIN esitelma E ON E.id = A.esitelma_id
+JOIN teema T ON T.id = E.teema_id
+JOIN esitelman_tyyppi ET ON ET.id = A.esitelman_tyyppi_id
+
+
+
 
 
 -- ESITELMIEN HYVÄKSYMISKIRJEET
 
 
 
--- ESITELMÄEHDOTUKSET TEEMOITTAIN
-CREATE VIEW konferenssin_esitelmien_teemat_konf_id_1
-Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitelmän aihe
+
+
+-- ESITELMÄEHDOTUKSET TEEMOITTAIN    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
+CREATE VIEW Konferenssin_esitelmaehdotukset_teemoittain AS
+SELECT ROW_NUMBER() OVER (ORDER BY T.teema ASC) AS rivi_numero,
+        K.konf_nimi, T.teema, E.esitelman_nimi    
+FROM Esitelma E
+JOIN konferenssi K ON K.id = E.konferenssi_id
+JOIN teema T ON T.id = E.teema_id
+WHERE K.konf_nimi LIKE 'Sijoita %';
+
+
+
+-- KONFERENSSIOHJELMA    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
+CREATE VIEW Konferenssiohjelma AS 
+SELECT ROW_NUMBER() OVER (ORDER BY KO.aloitus_aika ASC) AS rivi_numero,
+		K.konf_nimi, KO.pvm, KO.aloitus_aika, KO.lopetus_aika, 
+		E.esitelman_nimi, KH.huonenro
+FROM Konf_ohjelmanumero KO 
+JOIN konferenssi K ON K.id = KO.konferenssi_id
+JOIN konf_huone KH ON KH.id = KO.konf_huone_id
+JOIN esitelma E ON E.id = KO.esitelma_id 
+WHERE K.konf_nimi LIKE 'Sijoita %';
+
+SELECT * FROM Konferenssiohjelma;
+
+
+!!!!!!!!!!!!!!!--- LISÄÄMÄLLÄ esittelijän NIMEN HAKUTULOKSEEN ---> en saa samaa lopputulosta??
+
+SELECT K.konf_nimi, KO.pvm, KO.aloitus_aika, KO.lopetus_aika, 
+        E.esitelman_nimi, O.ohjelmatyyppi, KH.huonenro, H.sukunimi, H.etunimi
+FROM Konf_ohjelmanumero KO 
+JOIN konferenssi K ON K.id = KO.konferenssi_id
+JOIN konf_huone KH ON KH.id = KO.konf_huone_id
+JOIN esitelma E ON E.id = KO.esitelma_id
+JOIN esitelman_tekija ET ON ET.esitelma_id = E.id
+JOIN ohjelmatyyppi O ON O.id = KO.ohjelmatyyppi_id 
+JOIN henkilo H ON H.id = ET.henkilo_id                            
+WHERE K.konf_nimi LIKE 'Sijoita %'
+ORDER BY KO.aloitus_aika asc;
 
 
 
 
--- KONFERENSSI OHJELMA
-Konferenssi taulun Konf_nimi
-Konf_ohjelmanumero koko taulun
-CREATE VIEW konferenssin_ohjelma_konf_id_1 AS
+
 
 -- PROCEEDINGS
 
 
+
+
+
+
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
+CREATE VIEW Vahvistuskirje_maksaneille AS
+SELECT H.sukunimi, H.etunimi, H.email   ---  TARVIIKO OLLA MYÖS MAKSETTU-SARAKETTA?---
+FROM Konf_ilmoittautuminen KI 
+JOIN henkilo H ON H.id = KI.henkilo_id
+JOIN konferenssi K ON K.id = KI.konferenssi_id
+WHERE K.konf_nimi LIKE 'Sijoita %'
+AND KI.onko_maksettu = 1;
+
+SELECT * FROM Vahvistuskirje_maksaneille;
 
 
 -- OSALLISTUJALISTAN KOONTI
+CREATE VIEW Konferenssin_osallistujalista AS
+SELECT H.sukunimi, H.etunimi, H.email
+FROM Konf_ilmoittautuminen KI 
+JOIN henkilo H ON H.id = KI.henkilo_id
+JOIN konferenssi K ON K.id = KI.konferenssi_id
+WHERE K.konf_nimi LIKE 'Sijoita %';
 
+SELECT * FROM Konferenssin_osallistujalista;
