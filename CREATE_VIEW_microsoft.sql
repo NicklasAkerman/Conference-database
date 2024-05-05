@@ -13,10 +13,15 @@ where konf_nimi LIKE 'Sijoita %'
 GROUP BY konf_nimi;
 SELECT * FROM Ilmoittautuneiden_maara_nimella;
 
+-- ARVIOIJAN ARVIONTILOMAKE
+
+
+-- ESITELMIEN HYVÄKSYMISKIRJEET
 
 -- ESITELMÄEHDOTUKSET TEEMOITTAIN
 CREATE VIEW konferenssin_esitelmien_teemat_konf_id_1
 Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitelmän aihe
+
 
 
 
