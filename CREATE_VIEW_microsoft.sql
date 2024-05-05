@@ -18,6 +18,8 @@ SELECT * FROM Ilmoittautuneiden_maara_nimella;
 
 -- ESITELMIEN HYVÄKSYMISKIRJEET
 
+
+
 -- ESITELMÄEHDOTUKSET TEEMOITTAIN
 CREATE VIEW konferenssin_esitelmien_teemat_konf_id_1
 Konferenssitaulun konf_nimi, teema taulun teeman nimi, esitelmä taulusta esitelmän aihe
