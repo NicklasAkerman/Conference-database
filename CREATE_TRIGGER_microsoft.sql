@@ -1,6 +1,6 @@
--- ei samannimisiä konferensseja -trgiger --
+-- EI SAMANNIMISIÄ KONFERENSSEJA JA KONFERENSSIN PVM TULEVAISUUDESSA
 CREATE TRIGGER trg_check_konferenssi ON KONFERENSSI AFTER INSERT,
-UPDATE AS BEGIN -- check for duplicates--
+UPDATE AS BEGIN
 IF EXISTS (
     SELECT
         1
@@ -20,11 +20,8 @@ IF EXISTS (
                 inserted
         )
 ) BEGIN RAISERROR ('Konferenssin nimi on jo olemassa', 16, 1);
-
 ROLLBACK TRANSACTION;
-
 RETURN;
-
 END IF EXISTS (
     SELECT
         1
@@ -33,11 +30,7 @@ END IF EXISTS (
     WHERE
         aloitus_pvm < GETDATE ()
 ) BEGIN RAISERROR ('Konferenssin täytyy olla tulevaisuudessa', 16, 1);
-
 ROLLBACK TRANSACTION;
-
 RETURN;
-
 END;
-
 END;
