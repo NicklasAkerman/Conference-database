@@ -1,0 +1,1 @@
+CREATE INDEX idx_konf_ilmo_maara ON Konf_ilmoittautuminen (id, konferenssi_id);
