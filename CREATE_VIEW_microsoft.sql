@@ -34,6 +34,7 @@ JOIN esitelman_tyyppi ET ON ET.id = A.esitelman_tyyppi_id
 
 
 -- ESITELMIEN HYVÄKSYMISKIRJEET
+CREATE VIEW Konferenssin_hyväksymiskirjeet AS
 SELECT 
     esitelma.id AS 'Esitelmän id',
     esitelma.esitelman_nimi AS 'Esitelmän nimi',
@@ -58,7 +59,6 @@ WHERE
     AND esitelman_status.esitelman_status = 'Hyväksytty'
     AND konferenssi.id = 1 -- TÄMÄ RIVI POIS JOS HALUTAAN KAIKKI KONFERENSSIT
     ;
-
 
 
 -- ESITELMÄEHDOTUKSET TEEMOITTAIN    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
