@@ -44,6 +44,7 @@ SELECT
     henkilo.postinumero AS 'Postinumero', 
     henkilo.postitoimipaikka AS 'Postitoimipaikka', 
     henkilo.katuosoite AS 'Katuosoite', 
+    esitelma.email AS 'Esitelmän lähettäjän sähköpostiosoite',
     henkilo.maa AS 'Maa', 
     konferenssi.konf_nimi AS 'Konferenssi',
     konferenssi.id as 'Konferenssin id',
