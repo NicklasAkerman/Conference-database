@@ -28,7 +28,8 @@ JOIN esitelma E ON E.id = A.esitelma_id
 JOIN teema T ON T.id = E.teema_id
 JOIN esitelman_tyyppi ET ON ET.id = A.esitelman_tyyppi_id
 JOIN Konf_tyontekija kt ON a.konf_tyontekija_id = kt.id
-JOIN henkilo H on kt.henkilo_id = h.id;
+JOIN henkilo H on kt.henkilo_id = h.id
+WHERE e.konferenssi_id=1;
 
 
 -- ESITELMIEN HYVÄKSYMISKIRJEET
