@@ -1,3 +1,11 @@
+-- ILMOITTAUTUNEIDEN MÄÄRÄ
+CREATE VIEW Ilmoittautuneiden_maara AS 
+SELECT K.konf_nimi AS 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
+FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
+WHERE KI.konf_perumis_pvm IS NULL
+GROUP BY konf_nimi;
+
+
 -- ILMOTTAUNEIDEN MÄÄRÄ KONFERENSSIN NIMEN PERUSTEELLA HAKIEN
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
 SELECT K.konf_nimi AS 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
