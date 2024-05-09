@@ -1,6 +1,6 @@
 -- ILMOITTAUTUNEIDEN MÄÄRÄ
 CREATE VIEW Ilmoittautuneiden_maara AS 
-SELECT K.konf_nimi as 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
+SELECT K.konf_nimi AS 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
 WHERE KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
@@ -19,7 +19,7 @@ CREATE VIEW Arviointilomake AS
 SELECT H.sukunimi AS 'Arvioijan sukunimi',
 	H.etunimi AS 'Arvioijan etunimi', 
 	E.esitelman_nimi AS 'Esitelmän nimi', 
-	T.teema AS 'Teema',
+	T.teema AS 'Esitelmän teema',
 	ET.esitelman_tyyppi AS 'Esitelmäsuositus', 
 	A.kommentti AS 'Kommentti',
 	E.linkki AS 'Linkki esitelmään'
@@ -34,30 +34,30 @@ JOIN henkilo H on kt.henkilo_id = h.id;
 -- ESITELMIEN HYVÄKSYMISKIRJEET
 CREATE VIEW Konferenssin_hyväksymiskirjeet AS
 SELECT 
-    esitelma.id AS 'Esitelmän id',
-    esitelma.esitelman_nimi AS 'Esitelmän nimi',
-    henkilo.etunimi AS 'Etunimi', 
-    henkilo.sukunimi AS 'Sukunimi', 
-    henkilo.puhnro AS 'Puhelin',
-    henkilo.postinumero AS 'Postinumero', 
-    henkilo.postitoimipaikka AS 'Postitoimipaikka', 
-    henkilo.katuosoite AS 'Katuosoite', 
-    esitelma.email AS 'Esitelmän lähettäjän sähköpostiosoite',
-    henkilo.maa AS 'Maa', 
-    konferenssi.konf_nimi AS 'Konferenssi',
-    konferenssi.id as 'Konferenssin id',
-    esitelman_status.esitelman_status AS 'Esitelmän tila',
-	konf_ohjelmanumero.aloitus_aika AS 'Aika'
+    E.id AS 'Esitelmän id',
+    E.esitelman_nimi AS 'Esitelmän nimi',
+    H.etunimi AS 'Etunimi', 
+    H.sukunimi AS 'Sukunimi', 
+    H.puhnro AS 'Puhelin',
+    H.postinumero AS 'Postinumero', 
+    H.postitoimipaikka AS 'Postitoimipaikka', 
+    H.katuosoite AS 'Katuosoite', 
+    E.email AS 'Esitelmän lähettäjän sähköpostiosoite',
+    H.maa AS 'Maa', 
+    K.konf_nimi AS 'Konferenssi',
+    K.id as 'Konferenssin id',
+    ES.esitelman_status AS 'Esitelmän tila',
+	KO.aloitus_aika AS 'Aika'
 FROM esitelma E
 JOIN esitelman_tekija ET ON ET.esitelma_id = E.id
 JOIN esitelman_status ES ON ES.id = E.esitelman_status_id
 JOIN henkilo H ON H.id = ET.henkilo_id 
-JOIN konferenssi K ON E.konferenssi_id = konferenssi.id
-JOIN konf_ohjelmanumero ON konf_ohjelmanumero.esitelma_id = esitelma.id
+JOIN konferenssi K ON E.konferenssi_id = K.id
+JOIN konf_ohjelmanumero KO ON KO.esitelma_id = E.id
 WHERE 
-    esitelman_tekija.jarjestysnro = 1 
-    AND esitelman_status.esitelman_status = 'Hyväksytty'
-    AND konferenssi.id = 1;
+    ET.jarjestysnro = 1 
+    AND ES.esitelman_status = 'Hyväksytty'
+    AND K.id = 1;
 
 
 -- ESITELMÄEHDOTUKSET TEEMOITTAIN
@@ -76,15 +76,15 @@ SELECT * FROM Konferenssin_esitelmaehdotukset_teemoittain;
 
 -- KONFERENSSIOHJELMA
 CREATE VIEW Konferenssiohjelma AS 
-SELECT ROW_NUMBER() OVER (ORDER BY KO.aloitus_aika ASC) AS rivi_numero,
-		K.konf_nimi, 
-		KO.pvm, 
-		KO.aloitus_aika, 
-		KO.lopetus_aika, 
-		E.esitelman_nimi, 
-		KH.huonenumero,
-		H.sukunimi,
-		H.etunimi
+SELECT ROW_NUMBER() OVER (ORDER BY KO.aloitus_aika ASC) AS 'Rivinumero',
+		K.konf_nimi AS 'Konferenssi',
+		KO.pvm AS 'PVM',
+		KO.aloitus_aika AS 'Alkaa',
+		KO.lopetus_aika AS 'Loppuu',
+		E.esitelman_nimi AS 'Esitelmän nimi',
+		KH.huonenumero AS 'Huonenumero',
+		H.sukunimi AS 'Esitelmöijän sukunimi',
+		H.etunimi AS 'Esitelmöijän etunimi'
 FROM Konf_ohjelmanumero KO 
 JOIN konferenssi K ON K.id = KO.konferenssi_id
 JOIN konf_huone KH ON KH.id = KO.konf_huone_id
@@ -95,67 +95,49 @@ WHERE K.id = 1;
 
 
 
-!!!!!!!!!!!!!!!--- LISÄÄMÄLLÄ esittelijän NIMEN HAKUTULOKSEEN ---> en saa samaa lopputulosta??
-
-SELECT K.konf_nimi, 
-    KO.pvm, 
-    KO.aloitus_aika, 
-    KO.lopetus_aika, 
-    E.esitelman_nimi,
-    O.ohjelmatyyppi, 
-    KH.huonenro,
-    H.sukunimi, 
-    H.etunimi
-FROM Konf_ohjelmanumero KO 
-JOIN konferenssi K ON K.id = KO.konferenssi_id
-JOIN konf_huone KH ON KH.id = KO.konf_huone_id
-JOIN esitelma E ON E.id = KO.esitelma_id
-JOIN esitelman_tekija ET ON ET.esitelma_id = E.id
-JOIN ohjelmatyyppi O ON O.id = KO.ohjelmatyyppi_id 
-JOIN henkilo H ON H.id = ET.henkilo_id                            
-WHERE K.konf_nimi LIKE 'Sijoita %'
-ORDER BY KO.aloitus_aika asc;
-
-
-
-
-
-
 -- PROCEEDINGS
-
-
-
-
-
+CREATE VIEW Proceedings_tuloste AS
+SELECT K.konf_nimi AS 'Konferenssi',
+        K.aloitus_pvm AS 'Alkoi',
+        K.lopetus_pvm AS 'Loppui',
+        K.konf.tiivistelma AS 'Konferenssin tiivistelmä',
+        E.esitelman_nimi AS 'Esitelmä',
+        H.sukunimi AS 'Esitelmän tekijän sukunimi',
+        H.etunimi AS 'Esitelmän tekijän etunimi',
+        E.tiivistelma AS 'Esitelmän tiivistelmä',
+FROM Esitelmä E
+JOIN Konferenssi K ON K.id = E.konferenssi_id
+JOIN Henkilo H ON H.id = E.henkilo_id
+WHERE K.id = 1 AND E.esitelman_status_id = 3;
 
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
 CREATE VIEW Vahvistuskirje_maksaneille AS
-SELECT H.sukunimi, 
-    H.etunimi, 
-    H.email
+SELECT H.sukunimi AS 'Sukunimi',
+    H.etunimi AS 'Etunimi',
+    H.email AS 'email'
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
-WHERE K.konf_nimi LIKE 'Sijoita %'
+WHERE K.id = 1
 AND KI.onko_maksettu = 1;
 
 
 -- OSALLISTUMISTODISTUKET
 CREATE VIEW Konferenssin_ostallistumistodistus AS
-SELECT H.sukunimi,
-    H.etunimi, 
-    H.email,
-	KI.onko_osallistunut
+SELECT H.sukunimi AS 'Sukunimi',
+    H.etunimi AS 'Etunimi',
+    H.email AS 'email',
+	KI.onko_osallistunut AS 'On osallistunut'
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
-WHERE K.id = 4 AND KI.onko_osallistunut = 1;
+WHERE K.id = 1 AND KI.onko_osallistunut = 1;
 
 
 -- NIMILISTA KONFERENSSIIN ILMOITTAUTUNEILLE
 CREATE VIEW Konferenssiin_ilmoittautuneet AS
-SELECT H.sukunimi,
-    H.etunimi
+SELECT H.sukunimi AS 'Sukunimi',
+    H.etunimi AS 'Etunimi'
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
