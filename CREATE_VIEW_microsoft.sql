@@ -48,7 +48,8 @@ SELECT
     henkilo.maa AS 'Maa', 
     konferenssi.konf_nimi AS 'Konferenssi',
     konferenssi.id as 'Konferenssin id',
-    esitelman_status.esitelman_status AS 'Esitelmän tila'
+    esitelman_status.esitelman_status AS 'Esitelmän tila',
+	konf_ohjelmanumero.aloitus_aika AS 'Aika'
 FROM esitelma
 JOIN esitelman_tekija ON esitelman_tekija.esitelma_id = esitelma.id
 JOIN esitelman_status ON esitelman_status.id = esitelma.esitelman_status_id
@@ -58,8 +59,8 @@ JOIN konf_ohjelmanumero ON konf_ohjelmanumero.esitelma_id = esitelma.id
 WHERE 
     esitelman_tekija.jarjestysnro = 1 
     AND esitelman_status.esitelman_status = 'Hyväksytty'
-    AND konferenssi.id = 1 -- TÄMÄ RIVI POIS JOS HALUTAAN KAIKKI KONFERENSSIT
-    ;
+    AND konferenssi.id = 1
+;
 
 
 -- ESITELMÄEHDOTUKSET TEEMOITTAIN    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
