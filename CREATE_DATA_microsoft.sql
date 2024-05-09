@@ -123,10 +123,10 @@ INSERT INTO arviointi VALUES ('2024.05.07', 'hieno on', 3, 3, 1, 3);
 INSERT INTO arviointi VALUES ('2024.05.08', 'Ei sovellu tähän konferenssiin', 4, 3, 3, 5);
 
 -- KONFERENSSIN TEHTÄVÄ
-INSERT INTO konf_tehtava VALUES ('2024.05.01', 11, 1, 1, 1);
-INSERT INTO konf_tehtava VALUES ('2024.05.02', 11, 1, 1, 2);
-INSERT INTO konf_tehtava VALUES ('2024.05.03', 12, 1, 1, 3);
-INSERT INTO konf_tehtava VALUES ('2024.05.03', 12, 1, 1, 4);
+INSERT INTO konf_tehtava VALUES ('2024.05.01', 3, 1, 1, 1);
+INSERT INTO konf_tehtava VALUES ('2024.05.02', 3, 1, 1, 2);
+INSERT INTO konf_tehtava VALUES ('2024.05.03', 4, 1, 1, 3);
+INSERT INTO konf_tehtava VALUES ('2024.05.03', 4, 1, 1, 4);
 
 -- KONFERENSSIN OHJELMANUMERO
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 09:00', '2024.05.01 09:55', null, 1, 3, 1, 1);
