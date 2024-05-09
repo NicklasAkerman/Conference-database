@@ -5,8 +5,6 @@ FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id
 WHERE KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
 
-SELECT * FROM Ilmoittautuneiden_maara;
-
 
 -- ILMOTTAUNEIDEN MÄÄRÄ KONFERENSSIN NIMEN PERUSTEELLA HAKIEN
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
@@ -15,11 +13,9 @@ FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id
 where K.id = 1 AND KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
 
-SELECT * FROM Ilmoittautuneiden_maara_nimella;
-
 
 -- ARVIOIJAN ARVIONTILOMAKE
-CREATE VIEW Arviointilomke AS
+CREATE VIEW Arviointilomake AS
 SELECT H.sukunimi AS 'Arvioijan sukunimi',
 	H.etunimi AS 'Arvioijan etunimi', 
 	E.esitelman_nimi AS 'Esitelmän nimi', 
@@ -97,7 +93,6 @@ JOIN ohjelman_henkilo OH ON OH.konf_ohjelmanumero_id = KO.id
 JOIN henkilo H ON OH.henkilo_id = H.id
 WHERE K.id = 1;
 
-SELECT * FROM Konferenssiohjelma;
 
 
 !!!!!!!!!!!!!!!--- LISÄÄMÄLLÄ esittelijän NIMEN HAKUTULOKSEEN ---> en saa samaa lopputulosta??
@@ -144,8 +139,6 @@ JOIN konferenssi K ON K.id = KI.konferenssi_id
 WHERE K.konf_nimi LIKE 'Sijoita %'
 AND KI.onko_maksettu = 1;
 
-SELECT * FROM Vahvistuskirje_maksaneille;
-
 
 -- OSALLISTUMISTODISTUKET
 CREATE VIEW Konferenssin_ostallistumistodistus AS
@@ -156,9 +149,7 @@ SELECT H.sukunimi,
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
-WHERE K.id = 1 AND KI.onko_osallistunut = 1;
-
-SELECT * FROM Konferenssin_ostallistumistodistus;
+WHERE K.id = 4 AND KI.onko_osallistunut = 1;
 
 
 -- NIMILISTA KONFERENSSIIN ILMOITTAUTUNEILLE
@@ -169,4 +160,3 @@ FROM Konf_ilmoittautuminen KI
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
 WHERE K.id = 1;
-select * from Konferenssiin_ilmoittautuneet

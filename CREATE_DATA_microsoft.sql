@@ -1,5 +1,5 @@
 -- ESITELMÄN TYYPPI
-INSERT INTO esitelman_tyyppi VALUES ('Suullinen'), ('Posteri');
+INSERT INTO esitelman_tyyppi VALUES ('Suullinen'), ('Posteri'), ('Tyhjä');
 
 -- ESITELMÄN STATUS
 INSERT INTO esitelman_status VALUES ('Vastaanotettu'),('Arvioinnissa'),('Hyväksytty'),('Peruttu'),('Hylätty'),('Vaatii muutoksia');
@@ -99,14 +99,14 @@ INSERT INTO sos_ilmoittautuminen VALUES ('2024.05.04', null, 0, 0, 1, 4, 1, 1);
 
 
 -- ESITELMÄ
-INSERT INTO esitelma VALUES ('www.linkki1.fi', '2024.05.01', null, 'Näin minusta tuli RIKAS!', 'Ohjeet miten tulla rikkaaksi', 'roopeEsitelmä@ankka.com', 1, 6, 1, 1, null);
+INSERT INTO esitelma VALUES ('www.linkki1.fi', '2024.05.01', null, 'Näin minusta tuli RIKAS!', 'Ohjeet miten tulla rikkaaksi', 'roopeEsitelmä@ankka.com', 1, 6, 1, 3, null);
 INSERT INTO esitelma VALUES ('www.linkki2.fi', '2024.05.02', null, 'Näin minusta tuli hyvä kävelijä', 'Ohjeet kuinka kävellä kuin Aku Ankka', 'AkuEsitelmä@ankka.com', 2, 1, 1, 3, null);
 INSERT INTO esitelma VALUES ('www.linkki3.fi', '2024.05.03', null, 'pihistele kuin teppo', 'Tiivistelmätekstiä', 'tepontoinenemail@ankkala.com', 1, 6, 2, 3, null);
 INSERT INTO esitelma VALUES ('www.linkki4.fi', '2024.05.04', null, 'elä kuin aku', 'Tiivistelmätekstiä', 'aku.ankka.esitelmöi@sposti.com', 1, 6, 1, 3, null);
 
 -- ESITELMAN TEKIJÄ
 INSERT INTO esitelman_tekija VALUES (1, null, 1, 1);
-INSERT INTO esitelman_tekija VALUES (1, 'AL', 2, 2);
+INSERT INTO esitelman_tekija VALUES (1, 'AL', 2, 1);
 INSERT INTO esitelman_tekija VALUES (2, 'AL', 2, 2);
 INSERT INTO esitelman_tekija VALUES (1, null, 3, 3);
 INSERT INTO esitelman_tekija VALUES (1, 'AL', 4, 2);
@@ -115,12 +115,12 @@ INSERT INTO esitelman_tekija VALUES (1, 'AL', 4, 2);
 INSERT INTO arviointi VALUES ('2024.05.01', null, 1, 1, 1, 3);
 INSERT INTO arviointi VALUES ('2024.05.02', 'Tämä on kommentti', 2, 1, 1, 3);
 INSERT INTO arviointi VALUES ('2024.05.03', 'hieno on', 3, 1, 1, 3);
-INSERT INTO arviointi VALUES ('2024.05.04', 'Muutoksien jälkeen olisi hyvä posteri', 4, 1, 1, 6);
+INSERT INTO arviointi VALUES ('2024.05.04', 'Muutoksien jälkeen olisi hyvä posteri', 4, 1, 2, 6);
 
 INSERT INTO arviointi VALUES ('2024.05.05', null, 1, 3, 1, 3);
 INSERT INTO arviointi VALUES ('2024.05.06', 'Tämä on kommentti', 2, 3, 1, 3);
 INSERT INTO arviointi VALUES ('2024.05.07', 'hieno on', 3, 3, 1, 3);
-INSERT INTO arviointi VALUES ('2024.05.08', 'Ei sovellu tähän konferenssiin', 4, 3, 1, 5);
+INSERT INTO arviointi VALUES ('2024.05.08', 'Ei sovellu tähän konferenssiin', 4, 3, 3, 5);
 
 -- KONFERENSSIN TEHTÄVÄ
 INSERT INTO konf_tehtava VALUES ('2024.05.01', 11, 1, 1, 1);
