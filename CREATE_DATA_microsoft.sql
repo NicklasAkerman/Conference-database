@@ -130,8 +130,8 @@ INSERT INTO konf_tehtava VALUES ('2024.05.03', 4, 1, 1, 4);
 
 -- KONFERENSSIN OHJELMANUMERO
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 09:00', '2024.05.01 09:55', null, 1, 3, 1, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.02', '2024.05.02 10:00', '2024.05.01 10:55', null, 1, 3, 3, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 11:00', '2024.05.01 11:55', null, 1, 3, 4, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.02', '2024.05.02 10:00', '2024.05.02 10:55', null, 1, 3, 3, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 11:00', '2024.05.03 11:55', null, 1, 3, 4, 1);
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.04', '2024.05.04 13:00', '2024.05.01 13:55', 'LOUNAS', 1, 3, null, 3);
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.05', '2024.05.05 14:00', '2024.05.01 14:55', 'Paneelikeskustelu', 1, 3, null, 2);
 
