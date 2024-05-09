@@ -71,8 +71,6 @@ JOIN konferenssi K ON K.id = E.konferenssi_id
 JOIN teema T ON T.id = E.teema_id
 WHERE K.id = 1;
 
-SELECT * FROM Konferenssin_esitelmaehdotukset_teemoittain;
-
 
 -- KONFERENSSIOHJELMA
 CREATE VIEW Konferenssiohjelma AS 
@@ -104,8 +102,8 @@ SELECT K.konf_nimi AS 'Konferenssi',
         E.esitelman_nimi AS 'Esitelmä',
         H.sukunimi AS 'Esitelmän tekijän sukunimi',
         H.etunimi AS 'Esitelmän tekijän etunimi',
-        E.tiivistelma AS 'Esitelmän tiivistelmä',
-FROM Esitelmä E
+        E.tiivistelma AS 'Esitelmän tiivistelmä'
+FROM Esitelma E
 JOIN Konferenssi K ON K.id = E.konferenssi_id
 JOIN Henkilo H ON H.id = E.henkilo_id
 WHERE K.id = 1 AND E.esitelman_status_id = 3;

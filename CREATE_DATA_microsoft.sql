@@ -105,11 +105,11 @@ INSERT INTO esitelma VALUES ('www.linkki3.fi', '2024.05.03', null, 'pihistele ku
 INSERT INTO esitelma VALUES ('www.linkki4.fi', '2024.05.04', null, 'elä kuin aku', 'Tiivistelmätekstiä', 'aku.ankka.esitelmöi@sposti.com', 1, 6, 1, 3, null);
 
 -- ESITELMAN TEKIJÄ
-INSERT INTO esitelman_tekija VALUES (1, null, 1, 1);
+INSERT INTO esitelman_tekija VALUES (1, null, 1, 3);
 INSERT INTO esitelman_tekija VALUES (1, 'AL', 2, 1);
 INSERT INTO esitelman_tekija VALUES (2, 'AL', 2, 2);
-INSERT INTO esitelman_tekija VALUES (1, null, 3, 3);
-INSERT INTO esitelman_tekija VALUES (1, 'AL', 4, 2);
+INSERT INTO esitelman_tekija VALUES (1, null, 3, 2);
+INSERT INTO esitelman_tekija VALUES (1, 'AL', 4, 1);
 
 -- ARVIOINTI
 INSERT INTO arviointi VALUES ('2024.05.01', null, 1, 1, 1, 3);
