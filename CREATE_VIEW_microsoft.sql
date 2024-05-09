@@ -98,14 +98,15 @@ CREATE VIEW Proceedings_tuloste AS
 SELECT K.konf_nimi AS 'Konferenssi',
         K.aloitus_pvm AS 'Alkoi',
         K.lopetus_pvm AS 'Loppui',
-        K.konf.tiivistelma AS 'Konferenssin tiivistelmä',
+        K.konf_tiivistelma AS 'Konferenssin tiivistelmä',
         E.esitelman_nimi AS 'Esitelmä',
         H.sukunimi AS 'Esitelmän tekijän sukunimi',
         H.etunimi AS 'Esitelmän tekijän etunimi',
         E.tiivistelma AS 'Esitelmän tiivistelmä'
 FROM Esitelma E
 JOIN Konferenssi K ON K.id = E.konferenssi_id
-JOIN Henkilo H ON H.id = E.henkilo_id
+JOIN Esitelman_tekija ET ON ET.esitelma_id = E.id
+JOIN Henkilo H ON H.id = ET.henkilo_id
 WHERE K.id = 1 AND E.esitelman_status_id = 3;
 
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
