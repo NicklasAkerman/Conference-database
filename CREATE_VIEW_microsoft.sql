@@ -130,7 +130,7 @@ SELECT H.sukunimi AS 'Sukunimi',
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
-WHERE K.id = 1 AND KI.onko_osallistunut = 1;
+WHERE K.id = 4 AND KI.onko_osallistunut = 1;
 
 
 -- NIMILISTA KONFERENSSIIN ILMOITTAUTUNEILLE
