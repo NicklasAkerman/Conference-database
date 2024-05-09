@@ -64,10 +64,10 @@ INSERT INTO konf_tyontekija VALUES (5, 5);
 INSERT INTO konf_tyontekija VALUES (6, 1);
 
 -- KONFERENSSI
-INSERT INTO konferenssi VALUES ('Sijoita kuin Roope Ankka', '2025.05.02', '2025.05.02', null, 3, 6);
-INSERT INTO konferenssi VALUES ('Kävele kuin Aku Ankka', '2025.09.02', '2025.09.02', null, 2, 2);
-INSERT INTO konferenssi VALUES ('Koodaa kuin Iines', '2026.09.02', '2026.09.02', null, 2, 5);
-INSERT INTO konferenssi VALUES ('Mennyt konferenssi', '2023.09.02', '2023.09.02', null, 2, 4);
+INSERT INTO konferenssi VALUES ('Sijoita kuin Roope Ankka', '2025.05.02', '2025.05.02', 'Sijoitusneuvoja', 3, 6);
+INSERT INTO konferenssi VALUES ('Kävele kuin Aku Ankka', '2025.09.02', '2025.09.02', 'Kävelyneuvonta', 2, 2);
+INSERT INTO konferenssi VALUES ('Koodaa kuin Iines', '2026.09.02', '2026.09.02', 'Koodausta', 2, 5);
+INSERT INTO konferenssi VALUES ('Mennyt konferenssi', '2023.09.02', '2023.09.02', 'Menneitä neuvoja', 2, 4);
 
 -- KONFERENSSIN HINTA
 INSERT INTO konf_hinta VALUES (250, 1),(200, 1),(400, 2), (350, 2), (1000, 3), (2500, 3);
