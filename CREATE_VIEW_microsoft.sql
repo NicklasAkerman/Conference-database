@@ -122,11 +122,10 @@ AND KI.onko_maksettu = 1;
 
 
 -- OSALLISTUMISTODISTUKET
-CREATE VIEW Konferenssin_ostallistumistodistus AS
+CREATE VIEW Konferenssin_osallistumistodistus AS
 SELECT H.sukunimi AS 'Sukunimi',
     H.etunimi AS 'Etunimi',
-    H.email AS 'email',
-	KI.onko_osallistunut AS 'On osallistunut'
+    H.email AS 'email'
 FROM Konf_ilmoittautuminen KI 
 JOIN henkilo H ON H.id = KI.henkilo_id
 JOIN konferenssi K ON K.id = KI.konferenssi_id
