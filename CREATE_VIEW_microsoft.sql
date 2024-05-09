@@ -2,6 +2,7 @@
 CREATE VIEW Ilmoittautuneiden_maara AS 
 SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
+WHERE KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
 
 SELECT * FROM Ilmoittautuneiden_maara;
@@ -11,7 +12,7 @@ SELECT * FROM Ilmoittautuneiden_maara;
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
 SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
-where K.id = 1 
+where K.id = 1 AND KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
 
 SELECT * FROM Ilmoittautuneiden_maara_nimella;

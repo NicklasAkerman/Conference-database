@@ -25,10 +25,16 @@ INSERT INTO rooli VALUES ('Presidentti'), ('Ohjelmasihteeri'), ('Pääsihteeri')
 INSERT INTO henkilo VALUES ('Aku', 'Ankka', '0400123123', 'aku.ankka@sposti.com', '00000', 'Ankkalinna', 'Paratiisitie 13', 'Ankkamaa');
 INSERT INTO henkilo VALUES ('Teppo', 'Tulppu', '0400234234', 'teppo.tulppu@sposti.com', '00000', 'Ankkalinna', 'Paratiisitie 14', 'Ankkamaa');
 INSERT INTO henkilo VALUES ('Roope', 'Ankka', '0400999777', 'roope.ankka@rikas.com', '00001', 'Ankkalinna', 'Rahasäiliökukkula 1', 'Ankkamaa');
-INSERT INTO henkilo VALUES ('Risto', 'Reipas', '0409876548', 'risto.reipas@email.com', '00100', 'Helsinki', 'Urho Kekkosen katu 1', 'Suomi');
-INSERT INTO henkilo VALUES ('Mikko', 'Mallikas', '0457878787', 'mikko.m@email.com', '00100', 'Helsinki', 'Mannerheimintie 30', 'Suomi');
-INSERT INTO henkilo VALUES ('Joulu', 'Pukki', '020697855', 'J.pukki@korvatunturi.com', '99999', 'Korvatunturi', null, 'Suomi');
-INSERT INTO henkilo VALUES ('Maija', 'Mietteliäs', '0401234567', 'maija.mietteliäs@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Iines', 'Ankka', '0400999777', 'iines.ankka@rikas.com', '00001', 'Ankkalinna', 'Paratiisitie 111', 'Ankkamaa');
+INSERT INTO henkilo VALUES ('Super', 'Mies', '0401234567', 'Super@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Bat', 'Man', '0401234567', 'Bat@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Kapteeni', 'Amerikka', '0401234567', 'Kapteeni@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Vihreä', 'Hulkki', '0401234567', 'Vihreä@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Prinsessa', 'Ruusunen', '0401234567', 'Prinsessa@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Pieni', 'Merenneito', '0401234567', 'pieni@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Anna', 'Frozen', '0401234567', 'anna@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+INSERT INTO henkilo VALUES ('Elsa', 'Frosen', '0401234567', 'elsa@email.com', '00180', 'Helsinki', 'Osoite 1A 12', 'Suomi');
+
 
 -- KONFERENSSIN SIJANTI
 INSERT INTO konf_sijainti VALUES ('Messukeskus', 'Suomi', '00520', 'Helsinki', 'Messuaukio 1', 56000);
@@ -41,36 +47,49 @@ INSERT INTO sos_tapahtuma VALUES ('Päätösillallinen ravintola Shelter', 'Illa
 INSERT INTO sos_tapahtuma VALUES ('Metsäretki luontoon', 'Kävelyretki', '2025.08.24 12:00', '2025.08.24 18:00', 'Luontoreitti 1, 00160 Helsinki', null, 5);
 
 -- KONFERENSSIN HUONE
-INSERT INTO konf_huone VALUES ('Snellmann', '003', '1', 250, 3);
-INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '045', '2', 25, 1);
-INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '044', '2', 25, 1);
-INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '042', '2', 15, 1);
-INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '042', '2', 15, 1);
+INSERT INTO konf_huone VALUES ('Snellmann', '103', '1', 250, 3);
+INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '245', '2', 25, 1);
+INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '244', '2', 25, 1);
+INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '242', '2', 15, 1);
+INSERT INTO konf_huone VALUES ('Neuvotteluhuone', '242', '2', 15, 1);
 INSERT INTO konf_huone VALUES ('Tapahtuma-alue', '000', '1', 4500, 2);
 INSERT INTO konf_huone VALUES ('Tapahtuma-alue', '000', '1', 2000, 4);
 
--- KONFERENSSIN TYÖNTEKIJÄ
-INSERT INTO konf_tyontekija VALUES (1, 1);
-INSERT INTO konf_tyontekija VALUES (5, 8);
-INSERT INTO konf_tyontekija VALUES (6, 8);
+-- KONFERENSSIN TYÖNTEKIJÄ 
+INSERT INTO konf_tyontekija VALUES (9, 8); -- henkilo_id, rooli_id
+INSERT INTO konf_tyontekija VALUES (10, 8);
+INSERT INTO konf_tyontekija VALUES (11, 8);
+INSERT INTO konf_tyontekija VALUES (12, 8);
+INSERT INTO konf_tyontekija VALUES (5, 5);
+INSERT INTO konf_tyontekija VALUES (6, 1);
 
 -- KONFERENSSI
 INSERT INTO konferenssi VALUES ('Sijoita kuin Roope Ankka', '2025.05.02', '2025.05.02', null, 3, 6);
-INSERT INTO konferenssi VALUES ('Kävele kuin Roope Ankka', '2025.09.02', '2025.09.02', null, 3, 2);
+INSERT INTO konferenssi VALUES ('Kävele kuin Aku Ankka', '2025.09.02', '2025.09.02', null, 2, 2);
+INSERT INTO konferenssi VALUES ('Koodaa kuin Iines', '2026.09.02', '2026.09.02', null, 2, 5);
+INSERT INTO konferenssi VALUES ('Mennyt konferenssi', '2023.09.02', '2023.09.02', null, 2, 4);
 
 -- KONFERENSSIN HINTA
-INSERT INTO konf_hinta VALUES (250, 1),(200, 1),(400, 2), (350, 2);
+INSERT INTO konf_hinta VALUES (250, 1),(200, 1),(400, 2), (350, 2), (1000, 3), (2500, 3);
 
 -- KONFERENSSIN ILMOITTAUTUMINEN
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 0, 0, 0, null, 1, 1, 1);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 0, 0, 0, 0, 0, null, 1, 2, 1);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.03', 1, 0, 1, 0, 0, null, 1, 3, 1);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.04', 1, 0, 0, 1, 0, null, 1, 4, 1);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 0, 0, 0, null, 1, 1, 2);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 0, 0, 0, 0, 0, null, 1, 2, 2);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.03', 1, 0, 1, 0, 0, null, 1, 3, 2);
-INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.04', 1, 0, 0, 1, 0, null, 1, 4, 2);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 1, 0, 0, null, 1, 1, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 1, 0, 1, 1, 0, null, 1, 2, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 1, 0, 1, 1, 0, '2024.05.03', 1, 3, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.01', 1, 0, 0, 0, 0, null, 1, 5, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.02', 1, 0, 0, 0, 0, null, 1, 6, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.03', 1, 0, 0, 0, 0, null, 1, 7, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.05', 1, 0, 0, 0, 0, null, 1, 8, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.06', 0, 0, 0, 0, 1, null, 1, 9, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.07', 0, 0, 0, 0, 1, null, 1, 10, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.08', 0, 0, 0, 0, 1, null, 1, 11, 1);
+INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.09', 0, 0, 0, 0, 1, null, 1, 12, 1);
 
+    -- MENNYT KONFERENSSI, on maksanut ja osallistunut (1)
+INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.07', 1, 1, 0, 0, 0, null, 1, 5, 4);
+INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.08', 1, 1, 0, 0, 0, null, 1, 6, 4);
+INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.09', 1, 1, 0, 0, 0, null, 1, 7, 4);
+INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.10', 1, 1, 0, 0, 0, null, 1, 8, 4);
 
 -- SOSIAALISEN TAPAHTUMAN ILMOITTAUTUMINEN
 INSERT INTO sos_ilmoittautuminen VALUES ('2024.05.01', null, 1, 0, 2, 1, 1, 1);
@@ -105,10 +124,10 @@ INSERT INTO konf_tehtava VALUES ('2024.05.03', 3, 1, 1, 4);
 
 -- KONFERENSSIN OHJELMANUMERO
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 22:00', '2024.05.01 23:00', null, 1, 1, 1, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 14:00', '2024.05.01 14:55', null, 2, 1, 1, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 15:00', '2024.05.01 15:55', null, 2, 1, 2, 2);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 15:00', '2024.05.01 15:55', null, 1, 1, 3, 2);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 15:00', '2024.05.01 15:55', null, 1, 1, 4, 2);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.02', '2024.05.02 14:00', '2024.05.01 14:55', null, 2, 1, 1, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 15:00', '2024.05.01 15:55', null, 2, 1, 2, 2);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.04', '2024.05.04 15:00', '2024.05.01 15:55', null, 1, 1, 3, 2);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.05', '2024.05.05 15:00', '2024.05.01 15:55', null, 1, 1, 4, 2);
 
 -- OHJELMAN HENKILÖ
 INSERT INTO ohjelman_henkilo VALUES (1, 1),(2, 3),(2, 1);
