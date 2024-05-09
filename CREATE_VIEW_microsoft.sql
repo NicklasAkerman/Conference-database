@@ -93,7 +93,6 @@ JOIN henkilo H ON OH.henkilo_id = H.id
 WHERE K.id = 1;
 
 
-
 -- PROCEEDINGS
 CREATE VIEW Proceedings_tuloste AS
 SELECT K.konf_nimi AS 'Konferenssi',
@@ -109,6 +108,7 @@ JOIN Konferenssi K ON K.id = E.konferenssi_id
 JOIN Esitelman_tekija ET ON ET.esitelma_id = E.id
 JOIN Henkilo H ON H.id = ET.henkilo_id
 WHERE K.id = 1 AND E.esitelman_status_id = 3;
+
 
 --VAHVISTUSKIRJEET ILMOITTAUTUMISESTA
 CREATE VIEW Vahvistuskirje_maksaneille AS
