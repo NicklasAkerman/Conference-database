@@ -135,5 +135,6 @@ INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 11:00', '2024.0
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.04', '2024.05.04 13:00', '2024.05.01 13:55', 'LOUNAS', 1, 3, null, 3);
 INSERT INTO konf_ohjelmanumero VALUES ('2024.05.05', '2024.05.05 14:00', '2024.05.01 14:55', 'Paneelikeskustelu', 1, 3, null, 2);
 
+
 -- OHJELMAN HENKILÖ
-INSERT INTO ohjelman_henkilo VALUES (1, 1),(2, 2),(3, 3), (5, 1),(5, 2);
+INSERT INTO ohjelman_henkilo VALUES (1, 3),(2, 2),(3, 1), (5, 1),(5, 3);
