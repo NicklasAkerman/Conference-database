@@ -59,18 +59,18 @@ JOIN konf_ohjelmanumero ON konf_ohjelmanumero.esitelma_id = esitelma.id
 WHERE 
     esitelman_tekija.jarjestysnro = 1 
     AND esitelman_status.esitelman_status = 'Hyväksytty'
-    AND konferenssi.id = 1
-;
+    AND konferenssi.id = 1;
 
 
--- ESITELMÄEHDOTUKSET TEEMOITTAIN    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
-CREATE VIEW Konferenssin_esitelmaehdotukset_teemoittain AS
-SELECT ROW_NUMBER() OVER (ORDER BY T.teema ASC) AS rivi_numero,
-        K.konf_nimi, T.teema, E.esitelman_nimi    
+-- ESITELMÄEHDOTUKSET TEEMOITTAIN    ----->
+SELECT ROW_NUMBER() OVER (ORDER BY T.teema ASC) AS 'Rivinumero',
+        K.konf_nimi AS 'Konferenssin nimi', 
+		T.teema AS 'Esitelmän teema',
+		E.esitelman_nimi AS 'Esitelmän nimi'
 FROM Esitelma E
 JOIN konferenssi K ON K.id = E.konferenssi_id
 JOIN teema T ON T.id = E.teema_id
-WHERE K.konf_nimi LIKE 'Sijoita %';
+WHERE K.id = 1;
 
 
 
