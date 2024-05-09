@@ -10,7 +10,7 @@ INSERT INTO ohjelmatyyppi VALUES ('Paneelikeskustelu', null);
 INSERT INTO ohjelmatyyppi VALUES ('Ruokailu', 'Huomioi jono');
 
 -- TEEMA
-INSERT INTO teema VALUES ('Työhyvinvointi'), ('Hyvinvointi'),('Tietotekniikka'),('Tekoäly'),('Ohjelmistokehitys'),('Rahoitus');
+INSERT INTO teema VALUES ('Työhyvinvointi'), ('Hyvinvointi'),('Tietotekniikka'),('Tekoäly'),('Ohjelmistokehitys'),('Rahoitus'), ('Säästäminen');
 
 -- TEHTÄVÄ
 INSERT INTO tehtava VALUES ('Esitelmien arvionti'),('Ryhmien kasaus'),('Aikataulutus'),('Ilmapallojen puhaltaminen');
@@ -101,8 +101,8 @@ INSERT INTO sos_ilmoittautuminen VALUES ('2024.05.04', null, 0, 0, 1, 4, 1, 1);
 -- ESITELMÄ
 INSERT INTO esitelma VALUES ('www.linkki1.fi', '2024.05.01', null, 'Näin minusta tuli RIKAS!', 'Ohjeet miten tulla rikkaaksi', 'roopeEsitelmä@ankka.com', 1, 6, 1, 3, null);
 INSERT INTO esitelma VALUES ('www.linkki2.fi', '2024.05.02', null, 'Näin minusta tuli hyvä kävelijä', 'Ohjeet kuinka kävellä kuin Aku Ankka', 'AkuEsitelmä@ankka.com', 2, 1, 1, 3, null);
-INSERT INTO esitelma VALUES ('www.linkki3.fi', '2024.05.03', null, 'pihistele kuin teppo', 'Tiivistelmätekstiä', 'tepontoinenemail@ankkala.com', 1, 6, 2, 3, null);
-INSERT INTO esitelma VALUES ('www.linkki4.fi', '2024.05.04', null, 'elä kuin aku', 'Tiivistelmätekstiä', 'aku.ankka.esitelmöi@sposti.com', 1, 6, 1, 3, null);
+INSERT INTO esitelma VALUES ('www.linkki3.fi', '2024.05.03', null, 'Pihistele kuin Teppo', 'Tiivistelmätekstiä', 'tepontoinenemail@ankkala.com', 1, 7, 2, 3, null);
+INSERT INTO esitelma VALUES ('www.linkki4.fi', '2024.05.04', null, 'Elä kuin Aku', 'Tiivistelmätekstiä', 'aku.ankka.esitelmöi@sposti.com', 1, 6, 1, 3, null);
 
 -- ESITELMAN TEKIJÄ
 INSERT INTO esitelman_tekija VALUES (1, null, 1, 3);
