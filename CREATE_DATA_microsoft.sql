@@ -99,35 +99,41 @@ INSERT INTO sos_ilmoittautuminen VALUES ('2024.05.04', null, 0, 0, 1, 4, 1, 1);
 
 
 -- ESITELMÄ
-INSERT INTO esitelma VALUES ('www.linkki.fi', '2024.05.01', null, 'Näin minusta tuli RIKAS!', 'Ohjeet miten tulla rikkaaksi', 'roope@ankka.com', 1, 6, 1, 1, null);
-INSERT INTO esitelma VALUES ('www.linkki.fi', '2024.05.01', null, 'Näin minusta tuli hyvä kävalijä', 'Ohjeet kuinka kävellä kuin Roope Ankka', 'roope@ankka.com', 1, 2, 1, 3, null);
-INSERT INTO esitelma VALUES ('www.linkki.fi', '2024.05.01', null, 'pihistele kuin teppo', 'Tiivistelmätekstiä', 'tepontoinenemail@ankkala.com', 1, 6, 1, 3, null);
-INSERT INTO esitelma VALUES ('www.linkki.fi', '2024.05.01', null, 'elä kuin aku', 'Tiivistelmätekstiä', 'aku.ankka@sposti.com', 1, 6, 1, 3, null);
+INSERT INTO esitelma VALUES ('www.linkki1.fi', '2024.05.01', null, 'Näin minusta tuli RIKAS!', 'Ohjeet miten tulla rikkaaksi', 'roopeEsitelmä@ankka.com', 1, 6, 1, 1, null);
+INSERT INTO esitelma VALUES ('www.linkki2.fi', '2024.05.02', null, 'Näin minusta tuli hyvä kävelijä', 'Ohjeet kuinka kävellä kuin Aku Ankka', 'AkuEsitelmä@ankka.com', 2, 1, 1, 3, null);
+INSERT INTO esitelma VALUES ('www.linkki3.fi', '2024.05.03', null, 'pihistele kuin teppo', 'Tiivistelmätekstiä', 'tepontoinenemail@ankkala.com', 1, 6, 2, 3, null);
+INSERT INTO esitelma VALUES ('www.linkki4.fi', '2024.05.04', null, 'elä kuin aku', 'Tiivistelmätekstiä', 'aku.ankka.esitelmöi@sposti.com', 1, 6, 1, 3, null);
 
 -- ESITELMAN TEKIJÄ
-INSERT INTO esitelman_tekija VALUES (1, null, 1, 3);
-INSERT INTO esitelman_tekija VALUES (1, null, 2, 1);
-INSERT INTO esitelman_tekija VALUES (2, null, 2, 3);
-INSERT INTO esitelman_tekija VALUES (1, null, 3, 2);
-INSERT INTO esitelman_tekija VALUES (1, null, 4, 1);
+INSERT INTO esitelman_tekija VALUES (1, null, 1, 1);
+INSERT INTO esitelman_tekija VALUES (1, 'AL', 2, 2);
+INSERT INTO esitelman_tekija VALUES (2, 'AL', 2, 2);
+INSERT INTO esitelman_tekija VALUES (1, null, 3, 3);
+INSERT INTO esitelman_tekija VALUES (1, 'AL', 4, 2);
 
 -- ARVIOINTI
-INSERT INTO arviointi VALUES ('2024.05.01', null, 1, 1, 1, 6);
-INSERT INTO arviointi VALUES ('2024.05.01', 'Tämä on kommentti', 2, 1, 1, 6);
-INSERT INTO arviointi VALUES ('2024.05.01', null, 3, 1, 1, 6);
+INSERT INTO arviointi VALUES ('2024.05.01', null, 1, 1, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.02', 'Tämä on kommentti', 2, 1, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.03', 'hieno on', 3, 1, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.04', 'Muutoksien jälkeen olisi hyvä posteri', 4, 1, 1, 6);
+
+INSERT INTO arviointi VALUES ('2024.05.05', null, 1, 3, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.06', 'Tämä on kommentti', 2, 3, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.07', 'hieno on', 3, 3, 1, 3);
+INSERT INTO arviointi VALUES ('2024.05.08', 'Ei sovellu tähän konferenssiin', 4, 3, 1, 5);
 
 -- KONFERENSSIN TEHTÄVÄ
-INSERT INTO konf_tehtava VALUES ('2024.05.01', 1, 1, 1, 1);
-INSERT INTO konf_tehtava VALUES ('2024.05.02', 2, 1, 1, 2);
-INSERT INTO konf_tehtava VALUES ('2024.05.03', 3, 1, 1, 3);
-INSERT INTO konf_tehtava VALUES ('2024.05.03', 3, 1, 1, 4);
+INSERT INTO konf_tehtava VALUES ('2024.05.01', 11, 1, 1, 1);
+INSERT INTO konf_tehtava VALUES ('2024.05.02', 11, 1, 1, 2);
+INSERT INTO konf_tehtava VALUES ('2024.05.03', 12, 1, 1, 3);
+INSERT INTO konf_tehtava VALUES ('2024.05.03', 12, 1, 1, 4);
 
 -- KONFERENSSIN OHJELMANUMERO
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 22:00', '2024.05.01 23:00', null, 1, 1, 1, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.02', '2024.05.02 14:00', '2024.05.01 14:55', null, 2, 1, 1, 1);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 15:00', '2024.05.01 15:55', null, 2, 1, 2, 2);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.04', '2024.05.04 15:00', '2024.05.01 15:55', null, 1, 1, 3, 2);
-INSERT INTO konf_ohjelmanumero VALUES ('2024.05.05', '2024.05.05 15:00', '2024.05.01 15:55', null, 1, 1, 4, 2);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.01', '2024.05.01 09:00', '2024.05.01 09:55', null, 1, 3, 1, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.02', '2024.05.02 10:00', '2024.05.01 10:55', null, 1, 3, 3, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.03', '2024.05.03 11:00', '2024.05.01 11:55', null, 1, 3, 4, 1);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.04', '2024.05.04 13:00', '2024.05.01 13:55', 'LOUNAS', 1, 3, null, 3);
+INSERT INTO konf_ohjelmanumero VALUES ('2024.05.05', '2024.05.05 14:00', '2024.05.01 14:55', 'Paneelikeskustelu', 1, 3, null, 2);
 
 -- OHJELMAN HENKILÖ
-INSERT INTO ohjelman_henkilo VALUES (1, 1),(2, 3),(2, 1);
+INSERT INTO ohjelman_henkilo VALUES (1, 1),(2, 2),(3, 3), (5, 1),(5, 2);
