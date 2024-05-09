@@ -11,12 +11,10 @@ SELECT * FROM Ilmoittautuneiden_maara;
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
 SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
-where konf_nimi LIKE 'Sijoita %'
+where K.id = 1 
 GROUP BY konf_nimi;
 
 SELECT * FROM Ilmoittautuneiden_maara_nimella;
-
-
 
 
 -- ARVIOIJAN ARVIONTILOMAKE ------> KESKEN!!!! Pura konf_tyontekija_id nimiksi... = arvioinnin tekija
@@ -62,7 +60,8 @@ WHERE
     AND konferenssi.id = 1;
 
 
--- ESITELMÄEHDOTUKSET TEEMOITTAIN    ----->
+-- ESITELMÄEHDOTUKSET TEEMOITTAIN
+CREATE VIEW Konferenssin_esitelmaehdotukset_teemoittain AS
 SELECT ROW_NUMBER() OVER (ORDER BY T.teema ASC) AS 'Rivinumero',
         K.konf_nimi AS 'Konferenssin nimi', 
 		T.teema AS 'Esitelmän teema',
@@ -72,18 +71,23 @@ JOIN konferenssi K ON K.id = E.konferenssi_id
 JOIN teema T ON T.id = E.teema_id
 WHERE K.id = 1;
 
+SELECT * FROM Konferenssin_esitelmaehdotukset_teemoittain;
 
 
--- KONFERENSSIOHJELMA    -----> saisiko grouppausta jottei tarvi rivinumeroa? oder + view ei voi tehdä
+-- KONFERENSSIOHJELMA
 CREATE VIEW Konferenssiohjelma AS 
 SELECT ROW_NUMBER() OVER (ORDER BY KO.aloitus_aika ASC) AS rivi_numero,
-		K.konf_nimi, KO.pvm, KO.aloitus_aika, KO.lopetus_aika, 
-		E.esitelman_nimi, KH.huonenro
+		K.konf_nimi, 
+		KO.pvm, 
+		KO.aloitus_aika, 
+		KO.lopetus_aika, 
+		E.esitelman_nimi, 
+		KH.huonenumero
 FROM Konf_ohjelmanumero KO 
 JOIN konferenssi K ON K.id = KO.konferenssi_id
 JOIN konf_huone KH ON KH.id = KO.konf_huone_id
 JOIN esitelma E ON E.id = KO.esitelma_id 
-WHERE K.konf_nimi LIKE 'Sijoita %';
+WHERE K.id = 1;
 
 SELECT * FROM Konferenssiohjelma;
 
