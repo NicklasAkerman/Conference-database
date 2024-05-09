@@ -1,6 +1,6 @@
 -- ILMOITTAUTUNEIDEN MÄÄRÄ
 CREATE VIEW Ilmoittautuneiden_maara AS 
-SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
+SELECT K.konf_nimi as 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
 WHERE KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
@@ -10,7 +10,7 @@ SELECT * FROM Ilmoittautuneiden_maara;
 
 -- ILMOTTAUNEIDEN MÄÄRÄ KONFERENSSIN NIMEN PERUSTEELLA HAKIEN
 CREATE VIEW Ilmoittautuneiden_maara_nimella AS 
-SELECT K.konf_nimi, count (*)  'Ilmoittautujamäärä' 
+SELECT K.konf_nimi AS 'Konferenssi', count (*)  'Ilmoittautujamäärä' 
 FROM Konf_ilmoittautuminen KI JOIN konferenssi K ON K.id = KI.konferenssi_id 
 where K.id = 1 AND KI.konf_perumis_pvm IS NULL
 GROUP BY konf_nimi;
@@ -23,10 +23,10 @@ CREATE VIEW Arviointilomke AS
 SELECT H.sukunimi AS 'Arvioijan sukunimi',
 	H.etunimi AS 'Arvioijan etunimi', 
 	E.esitelman_nimi AS 'Esitelmän nimi', 
-	T.teema as teema, 
+	T.teema AS 'Teema',
 	ET.esitelman_tyyppi AS 'Esitelmäsuositus', 
-	A.kommentti,
-	E.linkki
+	A.kommentti AS 'Kommentti',
+	E.linkki AS 'Linkki esitelmään'
 FROM Arviointi A
 JOIN esitelma E ON E.id = A.esitelma_id
 JOIN teema T ON T.id = E.teema_id
@@ -52,11 +52,11 @@ SELECT
     konferenssi.id as 'Konferenssin id',
     esitelman_status.esitelman_status AS 'Esitelmän tila',
 	konf_ohjelmanumero.aloitus_aika AS 'Aika'
-FROM esitelma
-JOIN esitelman_tekija ON esitelman_tekija.esitelma_id = esitelma.id
-JOIN esitelman_status ON esitelman_status.id = esitelma.esitelman_status_id
-JOIN henkilo ON henkilo.id = esitelman_tekija.henkilo_id 
-JOIN konferenssi ON esitelma.konferenssi_id = konferenssi.id
+FROM esitelma E
+JOIN esitelman_tekija ET ON ET.esitelma_id = E.id
+JOIN esitelman_status ES ON ES.id = E.esitelman_status_id
+JOIN henkilo H ON H.id = ET.henkilo_id 
+JOIN konferenssi K ON E.konferenssi_id = konferenssi.id
 JOIN konf_ohjelmanumero ON konf_ohjelmanumero.esitelma_id = esitelma.id
 WHERE 
     esitelman_tekija.jarjestysnro = 1 
