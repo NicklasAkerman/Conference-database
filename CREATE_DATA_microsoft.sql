@@ -67,6 +67,8 @@ INSERT INTO konf_tyontekija VALUES (6, 1);
 INSERT INTO konferenssi VALUES ('Sijoita kuin Roope Ankka', '2025.05.02', '2025.05.02', 'Sijoitusneuvoja', 3, 6);
 INSERT INTO konferenssi VALUES ('Kävele kuin Aku Ankka', '2025.09.02', '2025.09.02', 'Kävelyneuvonta', 2, 2);
 INSERT INTO konferenssi VALUES ('Koodaa kuin Iines', '2026.09.02', '2026.09.02', 'Koodausta', 2, 5);
+
+-- MENNYT KONFERENSSI
 INSERT INTO konferenssi VALUES ('Mennyt konferenssi', '2023.09.02', '2023.09.02', 'Kaikki oli ennen paremmin', 2, 4);
 
 -- KONFERENSSIN HINTA
@@ -85,7 +87,7 @@ INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.07', 0, 0, 0, 0, 1, null, 1, 
 INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.08', 0, 0, 0, 0, 1, null, 1, 11, 1);
 INSERT INTO konf_ilmoittautuminen VALUES ('2024.05.09', 0, 0, 0, 0, 1, null, 1, 12, 1);
 
-    -- MENNYT KONFERENSSI, on maksanut ja osallistunut (1)
+-- MENNYT KONFERENSSI, on maksanut ja osallistunut (1)
 INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.07', 1, 1, 0, 0, 0, null, 1, 5, 4);
 INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.08', 1, 1, 0, 0, 0, null, 1, 6, 4);
 INSERT INTO konf_ilmoittautuminen VALUES ('2022.05.09', 1, 1, 0, 0, 0, null, 1, 7, 4);
