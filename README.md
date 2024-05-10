@@ -3,7 +3,7 @@ Group assignment material from the course Database Design and Implementation
 
 ### Tiedon lisäys ja muuttaminen
 ##### Datan syöttäminen
->INSERT INTO taulun_nimi VALUES (null, 'arvo');
+>INSERT INTO taulun_nimi VALUES (1, 'arvo');
 
 ##### Sarakkeen tiedon päivitys
 >UPDATE taulun_nimi  
@@ -15,3 +15,9 @@ Group assignment material from the course Database Design and Implementation
 
 ##### Tiedon poisto
 >DELETE FROM taulun_nimi WHERE id = 3;
+
+##### Näkymän luonti
+>CREATE VIEW nakyman_nimi AS
+
+##### Näkymän poisto
+>DROP VIEW nakyman_nimi
